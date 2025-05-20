@@ -14,10 +14,10 @@ jobs:
         uses: actions/checkout@v3
 
       - name: Pull Docker image
-        run: docker pull sebastianfuentes/clienteapi:latest
+        run: docker pull sebastianfuentesavalos/clienteapi:latest
 
       - name: Run Docker container
-        run: docker run -d -p 80:80 --name clienteapi sebastianfuentes/clienteapi:latest
+        run: docker run -d -p 80:80 --name clienteapi sebastianfuentesavalos/clienteapi:latest
 
       - name: Wait for container to start
         run: sleep 10
