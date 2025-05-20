@@ -1,0 +1,24 @@
+name: Delivery Workflow
+
+on:
+  workflow_dispatch:
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+
+      - name: Pull Docker image
+        run: docker pull yourdockerhubuser/clienteapi:latest
+
+      - name: Run Docker container
+        run: docker run -d -p 80:80 --name clienteapi yourdockerhubuser/clienteapi:latest
+
+      - name: Wait for container to start
+        run: sleep 10
+
+      - name: Test Prometheus metrics endpoint
+        run: curl -v http://localhost:80/metrics

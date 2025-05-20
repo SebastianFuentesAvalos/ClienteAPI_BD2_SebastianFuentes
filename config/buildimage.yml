@@ -1,0 +1,18 @@
+name: Build and Package Docker Image
+
+steps:
+  - name: Build Docker image
+    run: |
+      docker build -t clienteapi-api .
+
+  - name: Tag image as versioned package
+    run: |
+      docker tag clienteapi-api clienteapi-api:1.0.0
+
+  - name: Save image to .tar (package)
+    run: |
+      docker save -o clienteapi-api.tar clienteapi-api:1.0.0
+
+  - name: Verify image was created
+    run: |
+      docker images | findstr clienteapi-api
