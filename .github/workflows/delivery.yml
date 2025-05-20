@@ -3,7 +3,7 @@ name: Delivery Workflow
 on:
   push:
     branches:
-      - main  # Cambia si tu rama se llama distinto
+      - master  # Cambia si tu rama se llama distinto
 
 jobs:
   deploy:
